@@ -1,0 +1,393 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="You're invited! Baby shower for Lyba - Saturday 17 October 2026, 5:30 PM, Nahoon, East London.">
+<meta property="og:title" content="Oh baby! You're invited to Lyba's Baby Shower">
+<meta property="og:description" content="Saturday 17 October 2026 · 5:30 PM · 4 Avon Road, Nahoon, East London">
+<meta name="theme-color" content="#f3ede4">
+<title>Lyba's Baby Shower</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gloock&family=Nunito:wght@400;600;700;800&family=Caveat:wght@500;700&display=swap">
+<style>
+  /* Deliberately single-theme: a printed-invitation look in soft neutrals */
+  :root {
+    color-scheme: light;
+    --oat: #f3ede4;
+    --linen: #fbf8f3;
+    --sand: #e3d6c4;
+    --clay: #c9a88a;
+    --sage: #a9b39a;
+    --sage-deep: #6f7b62;
+    --cocoa: #4a3b30;
+    --cocoa-soft: #7a6758;
+    --display: "Gloock", Georgia, "Times New Roman", serif;
+    --body: "Nunito", system-ui, -apple-system, "Segoe UI", sans-serif;
+    --hand: "Caveat", "Comic Sans MS", cursive;
+  }
+  * { box-sizing: border-box; }
+  html, body { height: 100%; }
+  body {
+    background: radial-gradient(120% 80% at 50% 0%, var(--linen) 0%, var(--oat) 60%, #ece3d6 100%) fixed;
+    background-color: var(--oat);
+    color: var(--cocoa);
+    font-family: var(--body);
+    font-size: 16px;
+    line-height: 1.55;
+    overflow-x: hidden;
+  }
+
+  /* ---------- floating background ---------- */
+  .sky { position: fixed; inset: 0; pointer-events: none; overflow: hidden; z-index: 0; }
+  .cloud {
+    position: absolute; width: 180px; height: 60px; border-radius: 60px;
+    background: #fff; opacity: .55; filter: blur(1px);
+    animation: drift linear infinite;
+  }
+  .cloud::before, .cloud::after {
+    content: ""; position: absolute; background: inherit; border-radius: 50%;
+  }
+  .cloud::before { width: 80px; height: 80px; top: -38px; left: 26px; }
+  .cloud::after { width: 100px; height: 100px; top: -52px; left: 70px; }
+  @keyframes drift { from { transform: translateX(-260px); } to { transform: translateX(calc(100vw + 260px)); } }
+
+  .balloon { position: absolute; bottom: -180px; animation: rise linear infinite; }
+  @keyframes rise {
+    0% { transform: translate(0, 0) rotate(-4deg); }
+    50% { transform: translate(18px, -60vh) rotate(4deg); }
+    100% { transform: translate(-10px, -130vh) rotate(-3deg); }
+  }
+
+  /* ---------- envelope intro ---------- */
+  .intro {
+    position: fixed; inset: 0; z-index: 5;
+    display: grid; place-items: center; padding-inline: 16px;
+    transition: opacity .8s ease, visibility .8s;
+  }
+  .intro.gone { opacity: 0; visibility: hidden; }
+  .intro-inner { display: grid; justify-items: center; gap: 22px; }
+  .intro-kicker {
+    font-family: var(--hand); font-size: 30px; color: var(--cocoa-soft);
+    transition: opacity .4s;
+  }
+  .envelope {
+    position: relative; width: min(340px, 84vw); aspect-ratio: 4 / 3; max-width: 100%;
+    cursor: pointer; border: 0; padding: 0; background: none;
+    filter: drop-shadow(0 18px 30px rgba(74, 59, 48, .18));
+    animation: bob 3s ease-in-out infinite;
+    perspective: 900px;
+  }
+  .envelope:focus-visible { outline: 3px solid var(--sage-deep); outline-offset: 8px; border-radius: 6px; }
+  @keyframes bob { 50% { transform: translateY(-8px); } }
+  .env-back { position: absolute; inset: 0; background: #d8c7b1; border-radius: 6px; }
+  .env-card {
+    position: absolute; left: 7%; right: 7%; top: 8%; height: 84%;
+    background: var(--linen); border-radius: 4px;
+    display: grid; place-items: center; text-align: center;
+    font-family: var(--display); font-size: clamp(22px, 6vw, 30px); color: var(--cocoa);
+    transition: transform 1s cubic-bezier(.2,.8,.2,1) .45s;
+  }
+  .env-card small { display: block; font-family: var(--hand); font-size: .8em; color: var(--sage-deep); }
+  .env-front {
+    position: absolute; inset: 0; border-radius: 6px; background: #e6d8c5;
+    clip-path: polygon(0 0, 50% 55%, 100% 0, 100% 100%, 0 100%);
+  }
+  .env-flap {
+    position: absolute; left: 0; right: 0; top: 0; height: 58%;
+    background: #cfbca3; clip-path: polygon(0 0, 100% 0, 50% 100%);
+    transform-origin: top center; transition: transform .6s ease, z-index 0s .3s;
+    z-index: 3;
+  }
+  .seal {
+    position: absolute; left: 50%; top: 46%; z-index: 4;
+    width: 58px; height: 58px; margin-left: -29px; border-radius: 50%;
+    background: radial-gradient(circle at 35% 30%, #b7c0a8, var(--sage-deep));
+    color: var(--linen); font-family: var(--display); font-size: 28px;
+    display: grid; place-items: center;
+    box-shadow: 0 3px 8px rgba(0,0,0,.2), inset 0 -3px 6px rgba(0,0,0,.15);
+    transition: transform .4s ease, opacity .4s ease;
+  }
+  .envelope.open { animation: none; }
+  .envelope.open .seal { transform: scale(1.4); opacity: 0; }
+  .envelope.open .env-flap { transform: rotateX(180deg); z-index: 0; }
+  .envelope.open .env-card { transform: translateY(-58%); z-index: 1; }
+  .envelope.open .env-front { z-index: 2; }
+  .tap-hint { font-size: 14px; letter-spacing: .14em; text-transform: uppercase; color: var(--cocoa-soft); font-weight: 700; }
+
+  /* ---------- confetti ---------- */
+  .confetti { position: fixed; inset: 0; pointer-events: none; z-index: 6; overflow: hidden; }
+  .confetti i {
+    position: absolute; left: 50%; top: 45%;
+    width: 9px; height: 14px; border-radius: 2px;
+    animation: burst 2.4s cubic-bezier(.15,.7,.3,1) forwards;
+  }
+  @keyframes burst {
+    0% { transform: translate(0,0) rotate(0); opacity: 1; }
+    100% { transform: translate(var(--x), var(--y)) rotate(var(--r)); opacity: 0; }
+  }
+
+  /* ---------- invitation ---------- */
+  main {
+    position: relative; z-index: 2;
+    max-width: 560px; margin: 0 auto;
+    padding-inline: 16px; padding-block: 48px 64px;
+    display: grid; gap: 28px;
+  }
+  main.waiting > * { opacity: 0; transform: translateY(24px); }
+  main > * { transition: opacity .9s ease, transform .9s cubic-bezier(.2,.8,.2,1); }
+  main.shown > *:nth-child(1) { transition-delay: .1s; }
+  main.shown > *:nth-child(2) { transition-delay: .35s; }
+  main.shown > *:nth-child(3) { transition-delay: .6s; }
+  main.shown > *:nth-child(4) { transition-delay: .85s; }
+  main.shown > *:nth-child(5) { transition-delay: 1.1s; }
+  main.shown > *:nth-child(6) { transition-delay: 1.35s; }
+
+  .hero { text-align: center; display: grid; gap: 6px; }
+  .oh-baby { font-family: var(--hand); font-size: clamp(34px, 9vw, 44px); color: var(--sage-deep); line-height: 1; }
+  .eyebrow { font-size: 13px; letter-spacing: .2em; text-transform: uppercase; font-weight: 700; color: var(--cocoa-soft); }
+  h1 {
+    margin: 4px 0 0; font-family: var(--display); font-weight: 400;
+    font-size: clamp(44px, 13vw, 68px); line-height: .98; text-wrap: balance;
+  }
+  h1 .for { display: block; font-family: var(--body); font-size: .28em; font-weight: 600; letter-spacing: .02em; color: var(--cocoa-soft); margin-bottom: 8px; }
+  .surprise {
+    margin: 10px auto 0; max-width: 34ch; color: var(--cocoa-soft);
+  }
+  .surprise strong { color: var(--cocoa); }
+
+  /* baby blocks */
+  .blocks { display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; }
+  .block {
+    width: 88px; aspect-ratio: 1; max-width: 100%;
+    border-radius: 12px; display: grid; place-items: center; align-content: center;
+    background: var(--linen); border: 2px solid var(--sand);
+    box-shadow: 0 6px 0 var(--sand), 0 12px 20px rgba(74,59,48,.08);
+    font-family: var(--display);
+  }
+  .block:nth-child(1) { transform: rotate(-4deg); border-color: var(--sage); box-shadow: 0 6px 0 var(--sage), 0 12px 20px rgba(74,59,48,.08); }
+  .block:nth-child(2) { transform: translateY(-6px); border-color: var(--clay); box-shadow: 0 6px 0 var(--clay), 0 12px 20px rgba(74,59,48,.08); }
+  .block:nth-child(3) { transform: rotate(3deg); }
+  .block b { font-size: 36px; font-weight: 400; line-height: 1; }
+  .block span { font-family: var(--body); font-size: 12px; font-weight: 800; letter-spacing: .16em; text-transform: uppercase; color: var(--cocoa-soft); }
+
+  .details {
+    background: var(--linen); border-radius: 20px; padding: 24px 22px;
+    border: 1px solid #eadfcf;
+    box-shadow: 0 20px 40px -24px rgba(74,59,48,.35);
+    display: grid; gap: 18px;
+  }
+  .row { display: grid; grid-template-columns: 44px 1fr; gap: 14px; align-items: start; }
+  .icon {
+    width: 44px; height: 44px; border-radius: 50%; background: var(--oat);
+    display: grid; place-items: center; color: var(--sage-deep);
+  }
+  .icon svg { width: 22px; height: 22px; }
+  .label { font-size: 12px; letter-spacing: .16em; text-transform: uppercase; font-weight: 800; color: var(--cocoa-soft); }
+  .value { font-size: 18px; font-weight: 700; }
+  .value small { display: block; font-weight: 400; font-size: 15px; color: var(--cocoa-soft); }
+
+  .actions { display: flex; gap: 10px; flex-wrap: wrap; }
+  .btn {
+    flex: 1 1 180px; text-align: center; text-decoration: none;
+    padding: 14px 18px; border-radius: 999px; font-weight: 800; font-size: 15px;
+    border: 2px solid var(--cocoa); color: var(--cocoa); background: transparent;
+    transition: background .2s, color .2s, transform .2s; cursor: pointer; font-family: var(--body);
+  }
+  .btn:hover { transform: translateY(-2px); }
+  .btn.primary { background: var(--cocoa); color: var(--linen); }
+  .btn:focus-visible { outline: 3px solid var(--sage-deep); outline-offset: 3px; }
+
+  .countdown { text-align: center; display: grid; gap: 12px; }
+  .countdown h2 { margin: 0; font-family: var(--hand); font-weight: 700; font-size: 30px; color: var(--sage-deep); }
+  .timer { display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; }
+  .unit { min-width: 72px; padding: 12px 8px; border-radius: 14px; background: rgba(255,255,255,.55); border: 1px dashed var(--clay); }
+  .unit b { display: block; font-family: var(--display); font-weight: 400; font-size: 32px; line-height: 1.1; font-variant-numeric: tabular-nums; }
+  .unit span { font-size: 11px; letter-spacing: .16em; text-transform: uppercase; font-weight: 800; color: var(--cocoa-soft); }
+
+  .footer { text-align: center; display: grid; gap: 10px; justify-items: center; }
+  .footer p { margin: 0; font-family: var(--hand); font-size: 26px; color: var(--cocoa-soft); }
+  .replay { background: none; border: 0; color: var(--sage-deep); font: 700 14px var(--body); text-decoration: underline; cursor: pointer; padding: 6px; }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation: none !important; transition: none !important; }
+    .intro { display: none; }
+    main.waiting > * { opacity: 1; transform: none; }
+  }
+</style>
+</head>
+<body>
+
+<div class="sky" id="sky" aria-hidden="true"></div>
+
+<div class="intro" id="intro">
+  <div class="intro-inner">
+    <div class="intro-kicker">You've got mail…</div>
+    <button class="envelope" id="envelope" aria-label="Open the invitation">
+      <div class="env-back"></div>
+      <div class="env-card"><div>Oh baby!<small>you're invited</small></div></div>
+      <div class="env-front"></div>
+      <div class="env-flap"></div>
+      <div class="seal">L</div>
+    </button>
+    <div class="tap-hint" id="tapHint">Tap to open</div>
+  </div>
+</div>
+
+<div class="confetti" id="confetti" aria-hidden="true"></div>
+
+<main id="invite" class="waiting">
+  <section class="hero">
+    <div class="oh-baby">Oh baby!</div>
+    <div class="eyebrow">A little one is on the way</div>
+    <h1><span class="for">Please join us for a baby shower honouring</span>Lyba</h1>
+    <p class="surprise">Boy or girl? <strong>It's still a surprise!</strong> Come celebrate with us, and bring your best guess.</p>
+  </section>
+
+  <div class="blocks" aria-label="Saturday 17 October">
+    <div class="block"><b>17</b><span>Oct</span></div>
+    <div class="block"><b>Sat</b><span>2026</span></div>
+    <div class="block"><b>5:30</b><span>PM</span></div>
+  </div>
+
+  <section class="details">
+    <div class="row">
+      <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="3"/><path d="M3 10h18M8 3v4M16 3v4"/></svg></div>
+      <div><div class="label">When</div><div class="value">Saturday, 17 October 2026<small>From 5:30 PM</small></div></div>
+    </div>
+    <div class="row">
+      <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg></div>
+      <div><div class="label">Where</div><div class="value">4 Avon Road<small>Nahoon, East London</small></div></div>
+    </div>
+    <div class="actions">
+      <a class="btn primary" target="_blank" rel="noopener" href="https://calendar.google.com/calendar/render?action=TEMPLATE&amp;text=Lyba%27s%20Baby%20Shower&amp;dates=20261017T153000Z%2F20261017T183000Z&amp;location=4%20Avon%20Road%2C%20Nahoon%2C%20East%20London%2C%20South%20Africa&amp;details=Join%20us%20to%20celebrate%20Lyba%20and%20the%20little%20one%20on%20the%20way!">Add to calendar</a>
+      <a class="btn" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&amp;query=4%20Avon%20Road%2C%20Nahoon%2C%20East%20London%2C%20South%20Africa">Get directions</a>
+    </div>
+  </section>
+
+  <section class="countdown">
+    <h2>Counting down the days</h2>
+    <div class="timer" id="timer">
+      <div class="unit"><b id="d">24</b><span>Days</span></div>
+      <div class="unit"><b id="h">00</b><span>Hours</span></div>
+      <div class="unit"><b id="m">00</b><span>Mins</span></div>
+      <div class="unit"><b id="s">00</b><span>Secs</span></div>
+    </div>
+  </section>
+
+  <section class="footer">
+    <p>We can't wait to celebrate with you</p>
+    <button class="replay" id="replay">Watch the animation again</button>
+  </section>
+</main>
+
+<script>
+(function () {
+  var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var palette = ["#a9b39a", "#c9a88a", "#e3d6c4", "#6f7b62", "#d8b9a0", "#ffffff"];
+
+  // Background clouds and balloons
+  var sky = document.getElementById("sky");
+  [[12, 70], [38, 95], [64, 80]].forEach(function (c, i) {
+    var el = document.createElement("div");
+    el.className = "cloud";
+    el.style.top = c[0] + "%";
+    el.style.animationDuration = c[1] + "s";
+    el.style.animationDelay = (-i * 25) + "s";
+    el.style.transform = "scale(" + (0.6 + i * 0.2) + ")";
+    sky.appendChild(el);
+  });
+  for (var i = 0; i < 7; i++) {
+    var color = palette[i % 5];
+    var size = 44 + Math.random() * 30;
+    var b = document.createElement("div");
+    b.className = "balloon";
+    b.style.left = (5 + i * 13 + Math.random() * 6) + "%";
+    b.style.animationDuration = (18 + Math.random() * 12) + "s";
+    b.style.animationDelay = (-Math.random() * 25) + "s";
+    b.innerHTML = '<svg width="' + size + '" height="' + (size * 2.4) + '" viewBox="0 0 50 120">' +
+      '<ellipse cx="25" cy="28" rx="22" ry="27" fill="' + color + '" opacity=".85"/>' +
+      '<ellipse cx="17" cy="18" rx="5" ry="8" fill="#ffffff" opacity=".45"/>' +
+      '<path d="M22 55 L28 55 L25 60 Z" fill="' + color + '"/>' +
+      '<path d="M25 60 C 20 75, 30 88, 25 118" stroke="#7a6758" stroke-width="1" fill="none" opacity=".5"/></svg>';
+    sky.appendChild(b);
+  }
+
+  // Countdown (East London is SAST, UTC+2)
+  var target = new Date("2026-10-17T17:30:00+02:00").getTime();
+  function pad(n) { return String(n).padStart(2, "0"); }
+  function tick() {
+    var diff = Math.max(0, target - Date.now());
+    var d = Math.floor(diff / 864e5), h = Math.floor(diff / 36e5) % 24,
+        m = Math.floor(diff / 6e4) % 60, s = Math.floor(diff / 1e3) % 60;
+    document.getElementById("d").textContent = d;
+    document.getElementById("h").textContent = pad(h);
+    document.getElementById("m").textContent = pad(m);
+    document.getElementById("s").textContent = pad(s);
+    if (diff === 0) document.querySelector(".countdown h2").textContent = "It's party time!";
+  }
+  tick(); setInterval(tick, 1000);
+
+  // Intro sequence
+  var intro = document.getElementById("intro");
+  var env = document.getElementById("envelope");
+  var invite = document.getElementById("invite");
+  var hint = document.getElementById("tapHint");
+  var opened = false, autoTimer;
+
+  function confetti() {
+    var box = document.getElementById("confetti");
+    box.innerHTML = "";
+    for (var i = 0; i < 90; i++) {
+      var p = document.createElement("i");
+      var angle = Math.random() * Math.PI * 2;
+      var dist = 160 + Math.random() * 360;
+      p.style.setProperty("--x", Math.cos(angle) * dist + "px");
+      p.style.setProperty("--y", Math.sin(angle) * dist + 220 * Math.random() + "px");
+      p.style.setProperty("--r", (Math.random() * 720 - 360) + "deg");
+      p.style.background = palette[i % palette.length];
+      if (i % 3 === 0) p.style.borderRadius = "50%";
+      p.style.animationDelay = Math.random() * 0.2 + "s";
+      box.appendChild(p);
+    }
+  }
+
+  function open() {
+    if (opened) return;
+    opened = true;
+    clearTimeout(autoTimer);
+    hint.style.opacity = 0;
+    env.classList.add("open");
+    setTimeout(confetti, 700);
+    setTimeout(function () {
+      intro.classList.add("gone");
+      invite.classList.remove("waiting");
+      invite.classList.add("shown");
+    }, 2100);
+  }
+
+  function start() {
+    opened = false;
+    env.classList.remove("open");
+    hint.style.opacity = 1;
+    intro.classList.remove("gone");
+    invite.classList.add("waiting");
+    invite.classList.remove("shown");
+    window.scrollTo(0, 0);
+    autoTimer = setTimeout(open, 3500);
+  }
+
+  env.addEventListener("click", open);
+  document.getElementById("replay").addEventListener("click", start);
+
+  if (reduce) {
+    intro.classList.add("gone");
+    invite.classList.remove("waiting");
+  } else {
+    start();
+  }
+})();
+</script>
+</body>
+</html>
