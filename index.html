@@ -3,9 +3,9 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="description" content="You're invited! Baby shower for Lyba - Saturday 17 October 2026, 5:30 PM, Nahoon, East London.">
+<meta name="description" content="You're invited! Baby shower for Lyba - Saturday 17 October 2026, 5:30 PM, East London.">
 <meta property="og:title" content="Oh baby! You're invited to Lyba's Baby Shower">
-<meta property="og:description" content="Saturday 17 October 2026 · 5:30 PM · 4 Avon Road, Nahoon, East London">
+<meta property="og:description" content="Saturday 17 October 2026 · 5:30 PM · East London · RSVP on WhatsApp">
 <meta name="theme-color" content="#f3ede4">
 <title>Lyba's Baby Shower</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -258,11 +258,11 @@
     </div>
     <div class="row">
       <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg></div>
-      <div><div class="label">Where</div><div class="value">4 Avon Road<small>Nahoon, East London</small></div></div>
+      <div><div class="label">Where</div><div class="value">East London<small>The address will be sent to you on WhatsApp once you RSVP</small></div></div>
     </div>
     <div class="actions">
-      <a class="btn primary" target="_blank" rel="noopener" href="https://calendar.google.com/calendar/render?action=TEMPLATE&amp;text=Lyba%27s%20Baby%20Shower&amp;dates=20261017T153000Z%2F20261017T183000Z&amp;location=4%20Avon%20Road%2C%20Nahoon%2C%20East%20London%2C%20South%20Africa&amp;details=Join%20us%20to%20celebrate%20Lyba%20and%20the%20little%20one%20on%20the%20way!">Add to calendar</a>
-      <a class="btn" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&amp;query=4%20Avon%20Road%2C%20Nahoon%2C%20East%20London%2C%20South%20Africa">Get directions</a>
+      <a class="btn primary" id="rsvp" target="_blank" rel="noopener" href="#">RSVP on WhatsApp</a>
+      <a class="btn" target="_blank" rel="noopener" href="https://calendar.google.com/calendar/render?action=TEMPLATE&amp;text=Lyba%27s%20Baby%20Shower&amp;dates=20261017T153000Z%2F20261017T183000Z&amp;location=East%20London%2C%20South%20Africa&amp;details=Join%20us%20to%20celebrate%20Lyba%20and%20the%20little%20one%20on%20the%20way!%20The%20address%20is%20shared%20on%20WhatsApp%20after%20you%20RSVP.">Add to calendar</a>
     </div>
   </section>
 
@@ -284,6 +284,14 @@
 
 <script>
 (function () {
+  // RSVP: opens a WhatsApp chat with this number, message pre-filled.
+  // Number in international format, digits only (e.g. 27821234567 for 082 123 4567).
+  var RSVP_NUMBER = "27748628328";
+  var RSVP_MESSAGE = "Hi! I'm in for Lyba's baby shower on Saturday 17 October " +
+    String.fromCodePoint(0x1F389) + " Please send me the link to the address.";
+  document.getElementById("rsvp").href =
+    "https://wa.me/" + RSVP_NUMBER + "?text=" + encodeURIComponent(RSVP_MESSAGE);
+
   var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   var palette = ["#a9b39a", "#c9a88a", "#e3d6c4", "#6f7b62", "#d8b9a0", "#ffffff"];
 
