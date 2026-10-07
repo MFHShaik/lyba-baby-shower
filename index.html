@@ -3,9 +3,9 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="description" content="You're invited! Baby shower for Lyba - Saturday 17 October 2026, 5:30 PM, East London.">
-<meta property="og:title" content="Oh baby! You're invited to Lyba's Baby Shower">
-<meta property="og:description" content="Saturday 17 October 2026 · 5:30 PM · East London · RSVP on WhatsApp">
+<meta name="description" content="A little blessing is on the way. Join us for Lyba's baby shower - Saturday 17 October 2026, 5:30 PM, East London.">
+<meta property="og:title" content="A little blessing is on the way – Lyba's Baby Shower">
+<meta property="og:description" content="Saturday 17 October 2026 · 5:30 PM · East London">
 <meta name="theme-color" content="#f3ede4">
 <title>Lyba's Baby Shower</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -70,6 +70,7 @@
   .intro-inner { display: grid; justify-items: center; gap: 22px; }
   .intro-kicker {
     font-family: var(--hand); font-size: 30px; color: var(--cocoa-soft);
+    text-align: center; line-height: 1.15; max-width: 16ch;
     transition: opacity .4s;
   }
   .envelope {
@@ -208,6 +209,7 @@
 
   .footer { text-align: center; display: grid; gap: 10px; justify-items: center; }
   .footer p { margin: 0; font-family: var(--hand); font-size: 26px; color: var(--cocoa-soft); }
+  .footer .signoff { font-family: var(--body); font-size: 15px; font-weight: 700; color: var(--sage-deep); }
   .replay { background: none; border: 0; color: var(--sage-deep); font: 700 14px var(--body); text-decoration: underline; cursor: pointer; padding: 6px; }
 
   @media (prefers-reduced-motion: reduce) {
@@ -223,7 +225,7 @@
 
 <div class="intro" id="intro">
   <div class="intro-inner">
-    <div class="intro-kicker">You've got mail…</div>
+    <div class="intro-kicker">For you, with love…</div>
     <button class="envelope" id="envelope" aria-label="Open the invitation">
       <div class="env-back"></div>
       <div class="env-card"><div>Oh baby!<small>you're invited</small></div></div>
@@ -239,10 +241,10 @@
 
 <main id="invite" class="waiting">
   <section class="hero">
-    <div class="oh-baby">Oh baby!</div>
-    <div class="eyebrow">A little one is on the way</div>
+    <div class="oh-baby">Bismillah</div>
+    <div class="eyebrow">A little blessing is on the way</div>
     <h1><span class="for">Please join us for a baby shower honouring</span>Lyba</h1>
-    <p class="surprise">Boy or girl? <strong>It's still a surprise!</strong> Come celebrate with us, and bring your best guess.</p>
+    <p class="surprise">Boy or girl? <strong>It's still a surprise.</strong> Come celebrate with us, and bring your best guess.</p>
   </section>
 
   <div class="blocks" aria-label="Saturday 17 October">
@@ -258,7 +260,7 @@
     </div>
     <div class="row">
       <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg></div>
-      <div><div class="label">Where</div><div class="value">East London<small>The address will be sent to you on WhatsApp once you RSVP</small></div></div>
+      <div><div class="label">Where</div><div class="value">East London<small>The address will be shared once you RSVP</small></div></div>
     </div>
     <div class="actions">
       <a class="btn primary" id="rsvp" target="_blank" rel="noopener" href="#">RSVP on WhatsApp</a>
@@ -277,7 +279,8 @@
   </section>
 
   <section class="footer">
-    <p>We can't wait to celebrate with you</p>
+    <p>Your presence is the greatest gift</p>
+    <div class="signoff">With love, Lyba &amp; family</div>
     <button class="replay" id="replay">Watch the animation again</button>
   </section>
 </main>
@@ -287,7 +290,7 @@
   // RSVP: opens a WhatsApp chat with this number, message pre-filled.
   // Number in international format, digits only (e.g. 27821234567 for 082 123 4567).
   var RSVP_NUMBER = "27748628328";
-  var RSVP_MESSAGE = "Hi! I'm in for Lyba's baby shower on Saturday 17 October " +
+  var RSVP_MESSAGE = "Hi! I'd love to be there for Lyba's baby shower on Saturday 17 October " +
     String.fromCodePoint(0x1F389) + " Please send me the link to the address.";
   document.getElementById("rsvp").href =
     "https://wa.me/" + RSVP_NUMBER + "?text=" + encodeURIComponent(RSVP_MESSAGE);
@@ -333,7 +336,7 @@
     document.getElementById("h").textContent = pad(h);
     document.getElementById("m").textContent = pad(m);
     document.getElementById("s").textContent = pad(s);
-    if (diff === 0) document.querySelector(".countdown h2").textContent = "It's party time!";
+    if (diff === 0) document.querySelector(".countdown h2").textContent = "Today's the day, Alhamdulillah!";
   }
   tick(); setInterval(tick, 1000);
 
